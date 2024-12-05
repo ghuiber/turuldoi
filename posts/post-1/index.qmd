@@ -1,0 +1,54 @@
+---
+title: "Prima comparație istorică"
+author: "Gabi Huiber"
+date: "2024-12-03"
+categories: [news, code, analysis]
+---
+
+Tabelul de mai jos compară produsul intern brut pe cap de locuitor între România și Ungaria din 1990 până în 2023. Dacă aș scrie această notă cândva la primăvară, aș avea și date din 2024.
+
+```{r data, echo=FALSE, message=FALSE, warning=FALSE}
+# Install the wbstats package if you haven't already
+# install.packages("wbstats")
+
+# Load the wbstats package
+library(dplyr)
+library(wbstats)
+library(ggplot2)
+library(knitr)
+
+# Define the indicators for GDP per capita (current US$) and GDP per capita in PPP (current international $)
+indicators <- c("NY.GDP.PCAP.CD", "NY.GDP.PCAP.PP.CD")
+
+# Define the country codes for Hungary, Romania, Greece, and Estonia
+countries <- c("HUN", "ROU", "GRC", "EST", "RUS", "CHN", "USA")
+
+# Retrieve the data from 1990 onwards
+gdp_per_capita_data <- wb_data(
+  indicator = indicators,
+  country = countries,
+  start_date = 1990,
+  end_date = format(Sys.Date(), "%Y")
+)
+
+gdp_per_capita_data %>% 
+  filter(date %in% c(1990, 2000, 2010, 2023)) %>% 
+  filter(country %in% c('Romania', 'Hungary')) %>% 
+  dplyr::select(date, country, NY.GDP.PCAP.CD) %>% 
+  tidyr::pivot_wider(values_from = 'NY.GDP.PCAP.CD', 
+                     names_from = 'country') %>% 
+  rename(year = date) %>% 
+  mutate(year = as.character(year)) %>% 
+  mutate(difference = 100*(Hungary/Romania - 1)) %>% 
+  knitr::kable(digits = 0, 
+               format.args = list(big.mark= '.', 
+                                  decimal.mark = ','), 
+               col.names = c('Anul', 'Ungaria', 'România', 'diferența în %'), 
+               caption = 'PIB pe cap de locuitor în dolarii de azi. Sursa: Banca Mondială')
+```
+
+Cifrele sunt în dolarii de azi, prin urmare compațiile peste ani sunt valabile. Ultima coloană arată că Ungaria a pornit la drum de două ori mai bogată decât România. De-a lungul timpului, diferența s-a mărit la început, iar apoi a scăzut. 
+
+O comparație superficială ar zice că diferența de avere pe cap de locuitor dintre Ungaria și România a scăzut de cinci ori în 33 de ani, de la 100% în 1990 la 20% în 2023. Numai că primii 10 ani de tranziție în România au fost un deceniu pierdut. PIB-ul a rămas aproape neschimbat: de la \$1.648 a ajuns la \$1.660. Dacă am compara doar numerele din 2000 încoace, am observa că diferența de avere a scăzut de aproape nouă ori în 23 de ani: de la 179% la 20%.
+
+În 2000, un electorat care avea toate motivele să voteze cu mânie după 10 ani de guvernare execrabilă, a ales totuși să se țină de nas și să voteze răul cel mai mic: a ajuns Vadim în turul doi, dar a câștigat Iliescu.

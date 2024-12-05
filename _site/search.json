@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Despre",
+    "section": "",
+    "text": "Cum zice pe capac: acestea sunt doar niște notițe despre cum am apucat să văd eu România în 51 de ani de viață. M-am mutat de acolo în 1996, după ce am terminat facultatea la Cluj – științe economice la UBB – dar am continuat să o vizitez și să îi citesc ziarele. Mi-am continuat educația in SUA – tot științe economice, doctorat, susținut în 2003 la Clemson. Nu am interese materiale majore în România. Averea mea de acolo constă în două biciclete vechi dar în stare excelentă de funcționare."
+  },
+  {
+    "objectID": "posts/post-2/index.html",
+    "href": "posts/post-2/index.html",
+    "title": "A doua comparație istorică",
+    "section": "",
+    "text": "Când comparăm averea de-a lungul timpului într-o țară dată – de exemplu, România – trebuie să folosim o unitate de măsură constantă – de exemplu, dolarii de azi – ca să nu ne încurcăm în diferențele dintre nivelul prețurilor istorice de la un an la altul. Rămânem liberi să ne aducem aminte că inflația în România a fost cândva atât de mare încât a trebuit schimbată moneda națională (pe 1 iulie 2005, când România a trecut de la ROL la RON) dar acest detaliu nu este important dacă unitatea noastră de măsură – dolarii de azi – nu este afectată. \nComparațiile peste timp într-o țară dată sunt valabile dacă unitatea de măsură esre aceeași, dar comparațiile între țări diferite în același timp rămân nesatisfăcătoare: $10 în buzunarul unui român în Cluj azi nu pot cumpăra aceleași bunuri ca și $10 în buzunarul unui american contemporan în New York – și oricum nu aceleași bunuri sunt interesante pentru ei. Clujeanul ia autobuzul; newyorkezul, metroul. Pentru această situație s-a inventat ajustarea „dolari la paritatea puterii de cumpărare,” cu acronimul englezesc PPP, de la „purchasing power parity.”\nDupă cum probabil bănuiți deja, un român cu $1.000 de cheltuit cumpără de la alți români, după cum un american cu aceiași bani ar cumpăra de la alți americani. Ajustarea PPP este un fel de a spune că americanului i-ar trebui mai mult de $1.000 ca să trăiască aproximativ la fel de bine ca un român care are $1.000. Banca Mondială, din fericire, își publică statisticile și în dolarii de azi, și în dolarii de azi ajustați PPP. Asta ne permite să facem comparații mai realiste între țări.\nDar înainte de a compara din nou România cu Ungaria, hai să vedem evoluția României dupa ajustarea PPP:\n\n\n\nPIB pe cap de locuitor in România. Sursa: Banca Mondială\n\n\nAnul\nDolari de azi\nDolari de azi ajustați PPP\n\n\n\n\n1990\n1.648\n5.277\n\n\n2000\n1.660\n5.849\n\n\n2010\n8.398\n17.352\n\n\n2023\n18.419\n47.903\n\n\n\n\n\nTabelul de mai sus spune doar ca românul mediu trăia în 2023 cum ar fi trăit americanul mediu tot atunci dacă Statele Unite ar fi avut un produs intern brut mediu de $47.903. Acum suntem gata să revenim la comparația cu Ungaria, de data asta în dolari de azi ajustați PPP:\n\n\n\nPIB pe cap de locuitor în dolarii de azi ajustați PPP. Sursa: Banca Mondială\n\n\nAnul\nUngaria\nRomânia\ndiferența în %\n\n\n\n\n1990\n9.133\n5.277\n73\n\n\n2000\n11.855\n5.849\n103\n\n\n2010\n21.739\n17.352\n25\n\n\n2023\n45.942\n47.903\n-4\n\n\n\n\n\nTabelul de mai sus zice că Viktor Orbán și-a găsit concetățenii cu 25% mai bogați decât vecinii lor români în 2010, când s-a instalat ca premier pentru prima oară. La ultima socoteală i-a lăsat cu 4% mai săraci.\nNu mă îndoiesc că ungurii au avut motive bune să fie supărați pe guvernul Gyurcsány în 2010, dar administrația Orbán nu este un exemplu de urmat pentru România."
+  },
+  {
+    "objectID": "posts/post-1/index.html",
+    "href": "posts/post-1/index.html",
+    "title": "Prima comparație istorică",
+    "section": "",
+    "text": "Tabelul de mai jos compară produsul intern brut pe cap de locuitor între România și Ungaria din 1990 până în 2023. Dacă aș scrie această notă cândva la primăvară, aș avea și date din 2024.\n\n\n\nPIB pe cap de locuitor în dolarii de azi. Sursa: Banca Mondială\n\n\nAnul\nUngaria\nRomânia\ndiferența în %\n\n\n\n\n1990\n3.313\n1.648\n101\n\n\n2000\n4.624\n1.660\n179\n\n\n2010\n13.218\n8.398\n57\n\n\n2023\n22.147\n18.419\n20\n\n\n\n\n\nCifrele sunt în dolarii de azi, prin urmare compațiile peste ani sunt valabile. Ultima coloană arată că Ungaria a pornit la drum de două ori mai bogată decât România. De-a lungul timpului, diferența s-a mărit la început, iar apoi a scăzut. \nO comparație superficială ar zice că diferența de avere pe cap de locuitor dintre Ungaria și România a scăzut de cinci ori în 33 de ani, de la 100% în 1990 la 20% în 2023. Numai că primii 10 ani de tranziție în România au fost un deceniu pierdut. PIB-ul a rămas aproape neschimbat: de la $1.648 a ajuns la $1.660. Dacă am compara doar numerele din 2000 încoace, am observa că diferența de avere a scăzut de aproape nouă ori în 23 de ani: de la 179% la 20%.\nÎn 2000, un electorat care avea toate motivele să voteze cu mânie după 10 ani de guvernare execrabilă, a ales totuși să se țină de nas și să voteze răul cel mai mic: a ajuns Vadim în turul doi, dar a câștigat Iliescu."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Câteva note despre România",
+    "section": "",
+    "text": "Prima comparație istorică\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nDec 3, 2024\n\n\nGabi Huiber\n\n\n\n\n\n\n\n\n\n\n\n\nA doua comparație istorică\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nDec 3, 2024\n\n\nGabi Huiber\n\n\n\n\n\n\nNo matching items"
+  }
+]

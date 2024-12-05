@@ -1,0 +1,15 @@
+{
+  "hash": "1ea1b0652f15a4bd1725605128eb6fb0",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Prima comparație istorică\"\nauthor: \"Gabi Huiber\"\ndate: \"2024-12-03\"\ncategories: [news, code, analysis]\n---\n\n\nTabelul de mai jos compară produsul intern brut pe cap de locuitor între România și Ungaria din 1990 până în 2023. Dacă aș scrie această notă cândva la primăvară, aș avea și date din 2024.\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n\nTable: PIB pe cap de locuitor în dolarii de azi. Sursa: Banca Mondială\n\n|Anul | Ungaria| România| diferența în %|\n|:----|-------:|-------:|--------------:|\n|1990 |   3.313|   1.648|            101|\n|2000 |   4.624|   1.660|            179|\n|2010 |  13.218|   8.398|             57|\n|2023 |  22.147|  18.419|             20|\n\n\n:::\n:::\n\n\nCifrele sunt în dolarii de azi, prin urmare compațiile peste ani sunt valabile. Ultima coloană arată că Ungaria a pornit la drum de două ori mai bogată decât România. De-a lungul timpului, diferența s-a mărit la început, iar apoi a scăzut. \n\nO comparație superficială ar zice că diferența de avere pe cap de locuitor dintre Ungaria și România a scăzut de cinci ori în 33 de ani, de la 100% în 1990 la 20% în 2023. Numai că primii 10 ani de tranziție în România au fost un deceniu pierdut. PIB-ul a rămas aproape neschimbat: de la \\$1.648 a ajuns la \\$1.660. Dacă am compara doar numerele din 2000 încoace, am observa că diferența de avere a scăzut de aproape nouă ori în 23 de ani: de la 179% la 20%.\n\nÎn 2000, un electorat care avea toate motivele să voteze cu mânie după 10 ani de guvernare execrabilă, a ales totuși să se țină de nas și să voteze răul cel mai mic: a ajuns Vadim în turul doi, dar a câștigat Iliescu.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

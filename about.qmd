@@ -1,0 +1,12 @@
+---
+title: "Despre"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/ghuiber
+---
+
+Cum zice pe capac: acestea sunt doar niște notițe despre cum am apucat să văd eu România în 51 de ani de viață. M-am mutat de acolo în 1996, după ce am terminat facultatea la Cluj – științe economice la UBB – dar am continuat să o vizitez și să îi citesc ziarele. Mi-am continuat educația in SUA – tot științe economice, doctorat, susținut în 2003 la Clemson. Nu am interese materiale majore în România. Averea mea de acolo constă în două biciclete vechi dar în stare excelentă de funcționare.

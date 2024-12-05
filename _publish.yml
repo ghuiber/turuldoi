@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 9dbd3fe7-d4a1-4bda-b11e-6bedfedb52c6
+      url: 'https://jolly-liger-94a872.netlify.app'

@@ -1,0 +1,76 @@
+---
+title: "A doua comparație istorică"
+author: "Gabi Huiber"
+date: "2024-12-03"
+categories: [news, code, analysis]
+---
+
+Când comparăm averea de-a lungul timpului într-o țară dată – de exemplu, România – trebuie să folosim o unitate de măsură constantă – de exemplu, dolarii de azi – ca să nu ne încurcăm în diferențele dintre nivelul prețurilor istorice de la un an la altul. Rămânem liberi să ne aducem aminte că inflația în România a fost cândva atât de mare încât a trebuit schimbată moneda națională (pe 1 iulie 2005, când România a trecut de la ROL la RON) dar acest detaliu nu este important dacă unitatea noastră de măsură – dolarii de azi – nu este afectată. 
+
+Comparațiile peste timp într-o țară dată sunt valabile dacă unitatea de măsură esre aceeași, dar comparațiile între țări diferite în același timp rămân nesatisfăcătoare: \$10 în buzunarul unui român în Cluj azi nu pot cumpăra aceleași bunuri ca și \$10 în buzunarul unui american contemporan în New York – și oricum nu aceleași bunuri sunt interesante pentru ei. Clujeanul ia autobuzul; newyorkezul, metroul. Pentru această situație s-a inventat ajustarea „dolari la paritatea puterii de cumpărare,” cu acronimul englezesc PPP, de la „purchasing power parity.”
+
+După cum probabil bănuiți deja, un român cu \$1.000 de cheltuit cumpără de la alți români, după cum un american cu aceiași bani ar cumpăra de la alți americani. Ajustarea PPP este un fel de a spune că americanului i-ar trebui mai mult de \$1.000 ca să trăiască aproximativ la fel de bine ca un român care are \$1.000. Banca Mondială, din fericire, își publică statisticile și în dolarii de azi, și în dolarii de azi ajustați PPP. Asta ne permite să facem comparații mai realiste între țări.
+
+Dar înainte de a compara din nou România cu Ungaria, hai să vedem evoluția României dupa ajustarea PPP:
+
+```{r data, echo=FALSE, message=FALSE, warning=FALSE}
+# Install the wbstats package if you haven't already
+# install.packages("wbstats")
+
+# Load the wbstats package
+library(dplyr)
+library(wbstats)
+library(ggplot2)
+library(knitr)
+
+# Define the indicators for GDP per capita (current US$) and GDP per capita in PPP (current international $)
+indicators <- c("NY.GDP.PCAP.CD", "NY.GDP.PCAP.PP.CD")
+
+# Define the country codes for Hungary, Romania, Greece, and Estonia
+countries <- c("HUN", "ROU", "GRC", "EST", "RUS", "CHN", "USA")
+
+# Retrieve the data from 1990 onwards
+gdp_per_capita_data <- wb_data(
+  indicator = indicators,
+  country = countries,
+  start_date = 1990,
+  end_date = format(Sys.Date(), "%Y")
+)
+
+gdp_per_capita_data %>% 
+  filter(date %in% c(1990, 2000, 2010, 2023)) %>% 
+  filter(country == 'Romania') %>% 
+  dplyr::select(date, NY.GDP.PCAP.CD, NY.GDP.PCAP.PP.CD) %>% 
+  rename(year = date) %>% 
+  mutate(year = as.character(year)) %>% 
+  knitr::kable(digits = 0, 
+               format.args = list(big.mark= '.', 
+                                  decimal.mark = ','), 
+               col.names = c('Anul', 'Dolari de azi', 'Dolari de azi ajustați PPP'), 
+               caption = 'PIB pe cap de locuitor in România. Sursa: Banca Mondială')
+
+```
+
+Tabelul de mai sus spune doar ca românul mediu trăia în 2023 cum ar fi trăit americanul mediu tot atunci dacă Statele Unite ar fi avut un produs intern brut mediu de \$47.903. Acum suntem gata să revenim la comparația cu Ungaria, de data asta în dolari de azi ajustați PPP:
+
+```{r more_data, echo=FALSE, message=FALSE, warning=FALSE}
+
+gdp_per_capita_data %>% 
+  filter(date %in% c(1990, 2000, 2010, 2023)) %>% 
+  filter(country %in% c('Romania', 'Hungary')) %>% 
+  dplyr::select(date, country, NY.GDP.PCAP.PP.CD) %>% 
+  tidyr::pivot_wider(values_from = 'NY.GDP.PCAP.PP.CD', 
+                     names_from = 'country') %>% 
+  rename(year = date) %>% 
+  mutate(year = as.character(year)) %>% 
+  mutate(difference = 100*(Hungary/Romania - 1)) %>% 
+  knitr::kable(digits = 0, 
+               format.args = list(big.mark= '.', 
+                                  decimal.mark = ','), 
+               col.names = c('Anul', 'Ungaria', 'România', 'diferența în %'), 
+               caption = 'PIB pe cap de locuitor în dolarii de azi ajustați PPP. Sursa: Banca Mondială')
+```
+
+Tabelul de mai sus zice că Viktor Orbán și-a găsit concetățenii cu 25% mai bogați decât vecinii lor români în 2010, când s-a instalat ca premier pentru prima oară. La ultima socoteală i-a lăsat cu 4% mai săraci.
+
+Nu mă îndoiesc că ungurii au avut motive bune să fie supărați pe guvernul Gyurcsány în 2010, dar administrația Orbán nu este un exemplu de urmat pentru România.
