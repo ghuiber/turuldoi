@@ -1,0 +1,67 @@
+---
+title: "PIB-ul zice una, iar buzunarul meu zice alta"
+author: "Gabi Huiber"
+date: "2024-12-04"
+categories: [news, code, analysis]
+---
+
+Când Banca Mondială spune că românul mediu a produs avere în valoare de \$18.419 în 2023, adică de 11 ori mai mult decât în 1990 (când acest număr, în dolarii de azi, era \$1.648) spune, de fapt, că românul mediu trăia în 2023 de 11 ori mai bine decât în 1990, nu că era de 11 ori mai fericit. După 33 de ani cu urcușuri și coborâșuri nu m-aș mira dacă aș afla că românii nu se trezesc în fiecare dimineață plini de recunoștință pentru cât de bine le merge.
+
+Poate ar merita totuși să vedem cum se compară situația celui mai prost plătit român, ungur, eston și rus. Toate aceste țări stabilesc salarii minime pe economie prin lege și le raportează la Organizația Mondială a Muncii (ILO), care le publică în sumar [aici](https://ilostat.ilo.org/topics/wages/) dar tabelul amestecă ani și țări. Un set din care putem extrage datele din același an – 2023 – doar pentru țările care ne interesează pe noi se poate descărca gratis [aici](https://ilostat.ilo.org/data/). Dolarii ajustați PPP sunt din 2021.
+
+Un pic de aritmetică se cere pentru Rusia, care nu raporteaza decât in ruble. Rata de schimb în dolari ajustati PPP (2021, ca să fie la fel cu celealte trei tari) o găsim la [FMI](https://www.imf.org/external/datamapper/profile/RUS): 23.69 ruble/dolar. Cât despre rata de schimb în dolarii de azi, Rusia are o problemă: rubla a evoluat de la 73/dolar pe 1 ianuarie 2023 la 104 astăzi. Naiba știe cum ar fi cel mai corect să evaluăm salariul minim pe economie de acolo în 2023. Să zicem 80/dolar? 
+
+```{r show_wages, echo=FALSE, message=FALSE, warning=FALSE}
+library(magrittr)
+library(dplyr)
+
+data <- readr::read_csv('../../data/EAR_4MMN_CUR_NB_A-20241205T0751.csv') %>% 
+  janitor::clean_names()
+
+russia_ppp_2021 <- 23.69
+rub_to_usd_2023 <- 80
+
+my_slice <- data %>% 
+  filter(ref_area_label %in% c('Estonia', 
+                               'Hungary', 
+                               'Romania', 
+                               'Russian Federation')) %>% 
+  filter(as.integer(time) == 2023) %>% 
+  dplyr::select(ref_area_label, classif1_label, obs_value) %>% 
+  tidyr::pivot_wider(names_from = classif1_label, values_from = obs_value) %>% 
+  rename(country = ref_area_label, 
+         local_currency = `Currency: Local currency`, 
+         ppp_usd_2021 = `Currency: 2021 PPP $`, 
+         usd = `Currency: U.S. dollars`) %>% 
+  mutate(ppp_usd_2021 = if_else(is.na(ppp_usd_2021), 
+                                local_currency / russia_ppp_2021, 
+                                ppp_usd_2021), 
+         usd = if_else(is.na(usd), 
+                       local_currency/rub_to_usd_2023, 
+                       usd))
+
+my_slice %>% 
+  knitr::kable(format.args = list(big.mark = '.', decimal.mark = ','), 
+               digits = 0, 
+               col.names = c('', 
+                             'Moneda locală', 
+                             'Dolari PPP 2021', 
+                             'Dolari 2023'), 
+               caption = 'Salariul minim lunar în 2023. Sursa: ILO')
+
+
+```
+
+Am ales să compar România cu aceste trei țări pentru că după 35 de ani de la căderea zidului Berlinului impresia mea despre cum au evoluat traiectoriile lor este urmatoarea:
+
+ - România a început timid, dar azi este membru UE și aliat NATO, ambele cu sprijin popular larg.
+
+ - Estonia a început bine și a continuat bine: membru UE, în zona euro, aliat NATO, toate cu sprijin popular.
+
+ - Ungaria a început cel mai devreme (alegeri libere în 1990, câștigate de Forumul Democrat Maghiar, partid de centru-dreapta fondat în 1987) dar și-a pierdut entuziasmul. Administrația Fidesz, eurosceptică și pro-Rusia, are sprijin popular încă larg; Ungaria a fost ultimul membru NATO care a ratificat aderarea Suediei și mai înainte a Finlandei, ambele țări tradițional neutre care au ales aderarea la NATO după ce Rusia a atacat Ucraina. Fidesz a rămas la putere după acest episod penibil, ceea ce mă face să cred că publicul ungar a fost de acord cu obstrucționismul guvernului și nu este un aliat entuziast.
+
+ - Rusia este un stat mafiot; a ratat toate șansele de integrare care i-au fost oferite de la căderea Uniunii Sovietice și acum este ostilă Vestului democratic, în alianțe cu Iranul, China și Coreea de Nord. Cei mai prost plătiți dintre ruși n-au motive de mulțumire, dar nici încotro n-au. Rusia nu este o țară liberă.
+
+Diferențele dintre cele patru țări sunt deci interesante: trei au mers înspre Vest – una mai cu codeală la început, dar i-a venit pofta mâncând; una a avut tot timpul entuziasm susținut; iar cealaltă a avut un start bun, dar s-a razgândit. Ultima n-a făcut nici măcar o încercare.
+
+In toate aceste patru țări localnicii își văd de treabă cum pot și au prosperat, de bine de rău, cât i-au lăsat vremurile. Tabelul de mai sus arată că puterea de cumpărare a celui mai slab plătit muncitor, minimul legal pe economie, este cea mai mare în România. Nu știu cât de surprinși sunt românii să afle asta, dar eu sper că se vor simți măcar încurajați. Direcția lor de până acum le-a fost profitabilă.
